@@ -33,8 +33,13 @@ thead th {
     width: 100%;
 }
 
-/* .abilities,*/
-/* .abilities th,*/
+.abilities th span {
+    display: inline-block;
+    background: rgba(0, 0, 0, 0.10);
+    padding: 2px 8px;
+    border-radius: 4px;
+}
+
 .abilities td {
     background: #fff;
     color: #666;
@@ -112,7 +117,6 @@ button:hover {
     color: #fff;
 }
 
-.abilities th > span,
 .abilities td > span {
     padding: 0 4px;
 }
@@ -151,7 +155,7 @@ input {
     font-size:   1em;
     line-height: 1em;
     font-weight: bold;
-    border-radius: 2px;
+    border-radius: 4px;
 }
 
 .incdec span {
