@@ -28,12 +28,12 @@ section {
 
 .ability .num {
     display: inline-block;
-    width: 1.50em;
+    width: 1.30em;
     text-align: right;
 }
 
 .ability > span {
-    margin-right: 1em;
+    padding-right: 1em;
 }
 
 .ability .score {
@@ -105,12 +105,14 @@ table.bonuses th {
     border: 0;
     border: 2px solid rgba(0, 0, 0, 0.10);
     color: #421;
-    padding: 0;
+    padding: 0 0.25em;
     margin-bottom: 4px;
+    margin-right:  4px;
     width: 2.20rem;
-    font-size: 1.75rem;
-    line-height: 1.75rem;
+    font-size:   1.50rem;
+    line-height: 1.50rem;
     font-weight: bold;
+    border-radius: 8px;
 }
 
 .incdec span {
@@ -122,15 +124,22 @@ table.bonuses th {
 .incdec.inc {
     background-color: #383;
     color: #ded;
-    border-radius: 0 2px 2px 0;
-    border-left: 1px;
+    /* color: #383;*/
+    /* background-color: #ded;*/
+
+    /* border-radius: 0 2px 2px 0;*/
+    /* border-left-width: 1px;*/
 }
 
 .incdec.dec {
     background-color: #a33;
     color: #edd;
-    border-right: 0;
-    border-radius: 2px 0 0 2px;
+    /* color: #a33;*/
+    /* background-color: #edd;*/
+
+    /* border-right: 0;*/
+    /* border-right-width: 1px;*/
+    /* border-radius: 2px 0 0 2px;*/
 }
 
 header {

@@ -18,8 +18,12 @@
             score as favored, giving it a +2 bonus.
         </p>
         <p>
-            Columns are as follows: ability score before favored bonus, ability
-            score after favored bonus, and final ability score modifier.
+            Columns are as follows:
+            <ul>
+                <li>Ability score before favored bonus</li>
+                <li>Ability score after favored bonus</li>
+                <li>Final ability score modifier</li>
+            </ul>
         </p>
         <div data-bind="foreach: abilityNames">
             <div class="ability">
@@ -42,9 +46,9 @@
                         data-bind="click: inc"
                     ><span>+</span></button>
                 </div>
-                <span class="num" data-bind="text: $parent.scores[$data]"></span>
-                <span class="num" data-bind="text: $parent.totals[$data]"></span>
-                <span class="num" data-bind="text: formatMod($parent.modifiers[$data]())"></span>
+                <span class="num" data-bind="text: $parent.scores[$data]"></span
+                ><span class="num" data-bind="text: $parent.totals[$data]"></span
+                ><span class="num" data-bind="text: formatMod($parent.modifiers[$data]())"></span>
             </div>
         </div>
         <h3 class="total" data-bind="css: { over: over }">
