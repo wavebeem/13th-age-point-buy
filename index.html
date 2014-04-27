@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <title>13th Age Point Buy</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>13th Age Point Buy</h1>
+        <h2>Ability Scores Calculator</h2>
+    </header>
+    <section>
+        <div data-bind="foreach: abilityNames">
+            <div class="ability">
+                <span class="score" data-bind="text: $data"></span>
+                <div class="spinner">
+                    <input
+                        type="number"
+                        data-bind="
+                            value: $parent.scores[$data],
+                            click: selectAll"
+                    ><button
+                        class="incdec dec"
+                        data-bind="click: dec"
+                    ><span>&ndash;</span></button
+                    ><button
+                        class="incdec inc"
+                        data-bind="click: inc"
+                    ><span>+</span></button>
+                </div>
+                <span
+                    class="mod"
+                    data-bind="text: $parent.modifiers[$data]"
+                ></span>
+            </div>
+        </div>
+        <h3 class="total" data-bind="css: { over: over }">
+            Cost:
+            <span data-bind="text: cost"></span>
+            / 28
+        </h3>
+    </section>
+    <section>
+        <h2>Racial Bonus</h2>
+        <p>
+            Add +2 to <b>one</b> ability score determined by your race. This
+            bonus is applied after your point buy.
+        </p>
+        <table class="racialBonuses">
+            <tbody data-bind="foreach: racialScoreBonuses">
+                <tr>
+                    <th data-bind="text: $data[0]"></th>
+                    <td data-bind="text: $data[1]"></td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/knockout/3.1.0/knockout-min.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>

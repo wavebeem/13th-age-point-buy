@@ -1,0 +1,166 @@
+html {
+    font-family:
+        "Helvetica",
+        sans-serif;
+    background: #fec;
+    color: #863;
+}
+
+html,
+body {
+    margin:  0;
+    padding: 0;
+    padding-bottom: 4px;
+}
+
+section {
+    padding: 0 14px;
+}
+
+input,
+* {
+    /* box-sizing: border-box;*/
+}
+
+.ability {
+    font-size: 1.50rem;
+    font-weight: bold;
+}
+
+.ability * {
+    vertical-align: middle;
+}
+
+.ability .mod {
+    display: inline-block;
+    text-align: right;
+    width: 2rem;
+}
+
+.ability .score {
+    display: inline-block;
+    width: 3em;
+}
+
+input {
+    font-size: inherit;
+    border: none;
+}
+
+.spinner {
+    display: inline-block;
+    padding: 0;
+    height: 2em;
+    margin: 4px;
+    margin-bottom: 4px;
+    /* border: 2px solid rgba(0, 0, 0, 0.30);*/
+}
+
+.spinner > * {
+    margin: 0;
+    margin-right: 4px;
+    border-radius: 6px;
+    padding: 0;
+    height: 100% !important;
+    transition: 0.10s all;
+}
+
+/* .spinner > *:first-child {*/
+/*     border-top-left-radius:    4px;*/
+/*     border-bottom-left-radius: 4px;*/
+/* }*/
+
+/* .spinner > *:last-child {*/
+/*     border-top-right-radius:    4px;*/
+/*     border-bottom-right-radius: 4px;*/
+/* }*/
+
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+    padding: 0 !important;
+    border: 0 none !important;
+}
+
+.spinner > input {
+    padding-left:  0.15em;
+    padding-right: 0.25em;
+    border: 0;
+    /* border: 2px solid rgba(0, 0, 0, 0.30);*/
+    box-shadow: inset 0 0 0 2px rgba(0, 0, 0, 0.30);
+}
+
+input[type=number] {
+    text-align: right;
+    width: 3em;
+}
+
+label span {
+    font-weight: bold;
+}
+
+table.racialBonuses th {
+    text-align: right;
+    padding-right: 1em;
+}
+
+.total {
+    padding: 4px;
+    border-radius: 8px;
+    transition: 0.25s all;
+}
+
+.total.over {
+    background: #c84;
+    color: #fff;
+}
+
+.abilities {
+    font-size: 1.50rem;
+}
+
+:focus {
+    outline: none;
+    box-shadow: 0 0 0 4px rgba(204, 68, 68, 0.50);
+}
+
+.incdec {
+    background: #eee;
+    border: 0;
+    border: 2px solid rgba(0, 0, 0, 0.10);
+    color: #421;
+    padding: 0;
+    width: 3.00rem;
+    font-size: 1.75rem;
+    line-height: 2.75rem;
+    font-weight: bold;
+}
+
+.incdec span {
+    vertical-align: text-top;
+    height: 100%;
+    line-height: 100%;
+}
+
+.incdec.inc {
+    background-color: #383;
+    color: #ded;
+}
+
+.incdec.dec {
+    background-color: #a33;
+    color: #edd;
+}
+
+header {
+    background: #edb;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.20);
+    color: #641;
+    margin-bottom: 1em;
+    padding: 1em;
+}
+
+header h1,
+header h2 {
+    margin: 0;
+    padding: 0;
+}
