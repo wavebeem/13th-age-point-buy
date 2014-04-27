@@ -80,6 +80,11 @@ table.bonuses th {
     padding-right: 1em;
 }
 
+button,
+input {
+    transition: 0.25s box-shadow;
+}
+
 .total {
     padding: 4px;
     border-radius: 8px;
