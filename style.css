@@ -10,11 +10,14 @@ html,
 body {
     margin:  0;
     padding: 0;
-    padding-bottom: 4px;
 }
 
+header > *,
 section {
-    padding: 0 14px;
+    display: block;
+    padding: 8px;
+    max-width: 600px;
+    margin: 0 auto;
 }
 
 .ability {
@@ -151,12 +154,12 @@ header {
     background: #edb;
     border-bottom: 2px solid rgba(0, 0, 0, 0.20);
     color: #641;
-    margin-bottom: 1em;
+    margin-bottom: 0;
     padding: 1em;
 }
 
 header h1,
 header h2 {
-    margin: 0;
+    /* margin: 0;*/
     padding: 0;
 }
