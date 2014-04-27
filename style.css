@@ -17,54 +17,54 @@ section {
     display: block;
     padding: 8px;
     max-width: 600px;
+    min-width: 330px;
     margin: 0 auto;
 }
 
-.ability {
-    font-size: 1.30rem;
+thead th {
+    font-size: 60%;
+    text-transform: uppercase;
+}
+
+.abilities {
+    border-collapse: collapse;
+    font-size: 120%;
+    margin: 0 auto;
+    width: 100%;
+}
+
+/* .abilities,*/
+/* .abilities th,*/
+.abilities td {
+    background: #fff;
+    color: #666;
+    border-top:    2px solid #eee;
+    border-bottom: 2px solid #eee;
+    text-align: center;
     font-weight: bold;
-    width: 80px;
-    /* width: 33%;*/
-    background: #eee;
-    border-right: 2px solid #ccc;
-    /* box-shadow: 0 0 0 2px #ccc;*/
-    display: inline-block;
-}
-
-.ability:last-child {
-    border: 0;
-}
-
-.ability * {
-    vertical-align: middle;
     font-family:
         "Menlo",
         "Consolas",
-        "Droid Sans Mono",
         monospace;
 }
 
-.ability > * {
+.abilities tr:first-child  td { border-top:    2px solid #ccc; }
+.abilities tr:last-child   td { border-bottom: 2px solid #ccc; }
+.abilities td:first-child     { border-left:   2px solid #ccc; }
+.abilities td:last-child      { border-right:  2px solid #ccc; }
+
+.abilities td {
+    font-size: 120%;
+}
+
+.abilities td > label {
     display: inline-block;
-    text-align: center;
     width: 100%;
-    padding: 0;
-    margin:  0;
-    vertical-align: top;
 }
 
-.ability > .num {
-    color: #888;
-}
-
-.ability > .num,
-.ability > .score {
-    padding: 4px 0;
-}
-
-.spinner {
-    margin: 0 4px;
-    display: inline-block;
+.abilities th,
+.abilities td {
+    padding: 6px 10px;
 }
 
 button::-moz-focus-inner,
@@ -73,22 +73,34 @@ input::-moz-focus-inner {
     border: 0 none !important;
 }
 
+label {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+label span {
+    font-weight: bold;
+}
+
 table.bonuses th {
     text-align: right;
     padding-right: 1em;
 }
 
-button,
-input {
-    transition: 0.25s border;
-}
-
+label,
 button:hover {
     cursor: pointer;
+    transition: 0.25s box-shadow;
+    font-size: inherit;
 }
 
 .total {
-    margin-top: 0;
+    margin: 0;
+    margin-top: 10px;
     padding: 4px;
     border-radius: 8px;
     transition: 0.25s all;
@@ -100,20 +112,22 @@ button:hover {
     color: #fff;
 }
 
-.abilities {
-    border: 2px solid #ccc;
-    text-align: center;
-    display: inline-block;
-    margin-bottom: 10px;
-    /* width: 1000px;*/
+.abilities th > span,
+.abilities td > span {
+    padding: 0 4px;
+}
+
+label {
+    border-radius: 4px;
+}
+
+label:hover {
+    background: #eee;
 }
 
 :focus {
     outline: none;
-    /* box-shadow: 0 0 0 10px rgba(204, 68, 68, 0.50);*/
-    background-image: -webkit-linear-gradient(top,
-        rgba(0, 192, 255, 0.30),
-        rgba(0, 192, 255, 0.30)) !important;
+    box-shadow: 0 0 0 3px rgba(204, 68, 68, 0.50);
 }
 
 button,
@@ -121,61 +135,43 @@ input {
     font-size: inherit;
 }
 
-.ability > .score {
-    background: #fff;
-    color: #444;
-    border: 0;
-    border-bottom: 2px solid rgba(0, 0, 0, 0.20);
-    padding: 8px;
-}
-
 .score.favored {
     text-decoration: underline;
     font-weight: bold;
-    /* border-top-color: #c3f;*/
+    box-shadow: 0 0 0 3px rgba(32, 128, 192, 0.30);
 }
 
 .incdec {
     background: #eee;
     border: 0;
-    /* border: 2px solid rgba(0, 0, 0, 0.10);*/
     color: #421;
-    margin: 0;
-    margin-bottom: 0px;
-    margin-right:  0px;
-    /* width: 2.20rem;*/
-    width: 100%;
-    padding: 5px 0;
-    font-size:   30px;
-    line-height: 30px;
+    padding: 0 0.25em;
+    width:  2rem;
+    height: 2rem;
+    font-size:   1em;
+    line-height: 1em;
     font-weight: bold;
+    border-radius: 2px;
 }
 
 .incdec span {
+    font-family:
+        "Menlo",
+        "Consolas",
+        monospace;
     vertical-align: text-top;
     height: 100%;
     line-height: 100%;
 }
 
 .incdec.inc {
-    background-color: #383;
-    color: #ded;
-    /* color: #383;*/
-    /* background-color: #ded;*/
-
-    /* border-radius: 0 2px 2px 0;*/
-    /* border-left-width: 1px;*/
+    color: #383;
+    background-color: #ded;
 }
 
 .incdec.dec {
-    background-color: #a33;
-    color: #edd;
-    /* color: #a33;*/
-    /* background-color: #edd;*/
-
-    /* border-right: 0;*/
-    /* border-right-width: 1px;*/
-    /* border-radius: 2px 0 0 2px;*/
+    color: #a33;
+    background-color: #edd;
 }
 
 header {
@@ -188,6 +184,5 @@ header {
 
 header h1,
 header h2 {
-    /* margin: 0;*/
     padding: 0;
 }

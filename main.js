@@ -1,19 +1,25 @@
-ko.extenders.abilityScore = function(target, arg) {
-    var result = ko.computed({
-        read: target,
-        write: function(score) {
-            score = clamp(8, 18, Number(score));
-            target(score);
-            target.notifySubscribers(score);
-        }
-    }).extend({
-        notify: 'always'
-    });
+var valueCoercer = function(f) {
+    return function(target, arg) {
+        var result = ko.computed({
+            read: target,
+            write: function(x) {
+                x = f(x);
+                target(x);
+                target.notifySubscribers(x);
+            }
+        }).extend({
+            notify: 'always'
+        });
 
-    result(target());
+        result(target());
 
-    return result;
+        return result;
+    };
 };
+
+ko.extenders.abilityScore = valueCoercer(function(x) {
+    return clamp(8, 18, Number(x));
+});
 
 var clamp = function(min, max, x) {
     if (x < min) return min;
@@ -21,12 +27,8 @@ var clamp = function(min, max, x) {
     return x;
 };
 
-var selectAll = function() {
-    event.target.select();
-};
-
 var scoreToCost = function(score) {
-    return {
+    return ({
         18: 16,
         17: 13,
         16: 10,
@@ -38,7 +40,7 @@ var scoreToCost = function(score) {
         10:  2,
          9:  1,
          8:  0,
-    }[score];
+    }[score]);
 };
 
 var racialScoreBonuses = [
@@ -168,7 +170,6 @@ var $root = {
     modifiers: modifiers,
     cost: cost,
     racialScoreBonuses: racialScoreBonuses,
-    selectAll: selectAll,
     inc: inc,
     dec: dec,
     over: over,
