@@ -12,16 +12,28 @@
         <h2>Ability Scores Calculator</h2>
     </header>
     <section>
+        <h2>Instructions</h2>
+        <p>
+            Click the checkbox or the label next to it to select an ability
+            score as favored, giving it a +2 bonus.
+        </p>
+        <p>
+            Columns are as follows: ability score before favored bonus, ability
+            score after favored bonus, and final ability score modifier.
+        </p>
         <div data-bind="foreach: abilityNames">
             <div class="ability">
-                <span class="score" data-bind="text: $data"></span>
-                <div class="spinner">
+                <label>
                     <input
-                        type="number"
-                        data-bind="
-                            value: $parent.scores[$data],
-                            click: selectAll"
-                    ><button
+                        class="favored"
+                        type="checkbox"
+                        data-bind="checked: $parent.favored[$data]">
+                    <span
+                        class="score"
+                        data-bind="text: $data"></span>
+                </label>
+                <div class="spinner">
+                    <button
                         class="incdec dec"
                         data-bind="click: dec"
                     ><span>&ndash;</span></button
@@ -30,10 +42,9 @@
                         data-bind="click: inc"
                     ><span>+</span></button>
                 </div>
-                <span
-                    class="mod"
-                    data-bind="text: $parent.modifiers[$data]"
-                ></span>
+                <span class="num" data-bind="text: $parent.scores[$data]"></span>
+                <span class="num" data-bind="text: $parent.totals[$data]"></span>
+                <span class="num" data-bind="text: formatMod($parent.modifiers[$data]())"></span>
             </div>
         </div>
         <h3 class="total" data-bind="css: { over: over }">
@@ -48,7 +59,7 @@
             Add +2 to <b>one</b> ability score determined by your race. This
             bonus is applied after your point buy.
         </p>
-        <table class="racialBonuses">
+        <table class="bonuses">
             <tbody data-bind="foreach: racialScoreBonuses">
                 <tr>
                     <th data-bind="text: $data[0]"></th>
@@ -57,6 +68,23 @@
             </tbody>
         </table>
     </section>
+    <section>
+        <h2>Class Bonus</h2>
+        <p>
+            Add +2 to <b>one</b> ability score determined by your class. This
+            bonus is applied after your point buy. This bonus cannot be the
+            same as your racial bonus.
+        </p>
+        <table class="bonuses">
+            <tbody data-bind="foreach: classScoreBonuses">
+                <tr>
+                    <th data-bind="text: $data[0]"></th>
+                    <td data-bind="text: $data[1]"></td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.6.0/underscore-min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/knockout/3.1.0/knockout-min.js"></script>
     <script src="main.js"></script>
 </body>

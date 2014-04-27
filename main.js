@@ -42,15 +42,27 @@ var scoreToCost = function(score) {
 };
 
 var racialScoreBonuses = [
-    ["Human", "any"],
-    ["Dwarf", "CON or WIS"],
-    ["Half-Orc", "STR or DEX"],
-    ["Dark Elf", "DEX or CHA"],
-    ["High Elf", "INT or CHA"],
-    ["Wood Elf", "DEX or WIS"],
-    ["Gnome", "DEX or INT"],
-    ["Half-Elves", "CON or CHA"],
-    ["Halflings", "CON or DEX"],
+    ["Human",       "any"],
+    ["Dwarf",       "CON or WIS"],
+    ["Half-Orc",    "STR or DEX"],
+    ["Dark Elf",    "DEX or CHA"],
+    ["High Elf",    "INT or CHA"],
+    ["Wood Elf",    "DEX or WIS"],
+    ["Gnome",       "DEX or INT"],
+    ["Half-Elves",  "CON or CHA"],
+    ["Halflings",   "CON or DEX"],
+];
+
+var classScoreBonuses = [
+    ["Barbarian",   "STR or CON"],
+    ["Bard",        "DEX or CHA"],
+    ["Cleric",      "WIS or STR"],
+    ["Fighter",     "STR or CON"],
+    ["Paladin",     "STR or CHA"],
+    ["Ranger",      "DEX or STR"],
+    ["Rogue",       "DEX or CHA"],
+    ["Sorcerer",    "CHA or CON"],
+    ["Wizard",      "INT or WIS"],
 ];
 
 var abilityNames = [
@@ -78,15 +90,22 @@ var cost = ko.computed({
     deferEvaluation: true
 });
 
-var scores = {
-    STR: ko.observable(10).extend({ abilityScore: true }),
-    CON: ko.observable(10).extend({ abilityScore: true }),
-    DEX: ko.observable(10).extend({ abilityScore: true }),
-    INT: ko.observable(10).extend({ abilityScore: true }),
-    WIS: ko.observable(10).extend({ abilityScore: true }),
-    CHA: ko.observable(10).extend({ abilityScore: true }),
-};
+var favored = _.reduce(abilityNames, function(o, n) {
+    o[n] = ko.observable(false);
+    return o;
+}, {});
 
+var scores = _.reduce(abilityNames, function(o, n) {
+    o[n] = ko.observable(10).extend({ abilityScore: true });
+    return o;
+}, {});
+
+var totals = _.reduce(abilityNames, function(o, n) {
+    o[n] = ko.computed(function() {
+        return scores[n]() + (favored[n]() ? 2 : 0);
+    });
+    return o;
+}, {});
 
 var modFor = function(ability) {
     return ko.computed(function() {
@@ -109,22 +128,27 @@ var over = ko.computed(function() {
     return cost() > 28;
 });
 
+var formatMod = function(mod) {
+    if (mod >= 0) return "+" + mod;
+    return "" + mod;
+};
+
+var modifiers = _.reduce(abilityNames, function(o, n) {
+    o[n] = modFor(totals[n]);
+    return o;
+}, {});
+
 var $root = {
     scores: scores,
-    modifiers: {
-        STR: modFor(scores.STR),
-        CON: modFor(scores.CON),
-        DEX: modFor(scores.DEX),
-        INT: modFor(scores.INT),
-        WIS: modFor(scores.WIS),
-        CHA: modFor(scores.CHA),
-    },
+    modifiers: modifiers,
     cost: cost,
     racialScoreBonuses: racialScoreBonuses,
     selectAll: selectAll,
     inc: inc,
     dec: dec,
     over: over,
+    totals: totals,
+    favored: favored,
 };
 
 ko.applyBindings($root);
