@@ -138,6 +138,31 @@ var modifiers = _.reduce(abilityNames, function(o, n) {
     return o;
 }, {});
 
+var toggleFavored = function(name) {
+    favored[name](!favored[name]());
+};
+
+var wideGroupedAbilityNames = [[
+    'STR', 'CON', 'DEX',
+    'INT', 'WIS', 'CHA',
+]];
+
+var narrowGroupedAbilityNames = [
+    ['STR', 'CON', 'DEX'],
+    ['INT', 'WIS', 'CHA'],
+];
+
+var width = ko.observable(document.documentElement.clientWidth);
+
+window.onresize = function() {
+    width(document.documentElement.clientWidth);
+};
+
+var groupedAbilityNames = ko.computed(function() {
+    if (width() < 800) return narrowGroupedAbilityNames;
+    return wideGroupedAbilityNames;
+});
+
 var $root = {
     scores: scores,
     modifiers: modifiers,
@@ -149,6 +174,8 @@ var $root = {
     over: over,
     totals: totals,
     favored: favored,
+    toggleFavored: toggleFavored,
+    groupedAbilityNames: groupedAbilityNames,
 };
 
 ko.applyBindings($root);

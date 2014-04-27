@@ -14,42 +14,38 @@
     <section>
         <h2>Instructions</h2>
         <p>
-            Click the checkbox or the label next to it to select an ability
-            score as favored, giving it a +2 bonus.
+            Click an ability score name to give it a +2 bonus. Numbers shown
+            are total ability score after point buy and bonus, with ability
+            modifier on the bottom.
         </p>
-        <p>
-            Columns are as follows:
-            <ul>
-                <li>Ability score before favored bonus</li>
-                <li>Ability score after favored bonus</li>
-                <li>Final ability score modifier</li>
-            </ul>
-        </p>
-        <div data-bind="foreach: abilityNames">
-            <div class="ability">
-                <label>
-                    <input
-                        class="favored"
-                        type="checkbox"
-                        data-bind="checked: $parent.favored[$data]">
-                    <span
-                        class="score"
-                        data-bind="text: $data"></span>
-                </label>
-                <div class="spinner">
+        <div style="text-align: center" data-bind="foreach: groupedAbilityNames">
+            <div class="abilities" data-bind="foreach: $data"
+                ><div class="ability">
                     <button
-                        class="incdec dec"
-                        data-bind="click: dec"
-                    ><span>&ndash;</span></button
-                    ><button
+                        class="score"
+                        data-bind="
+                            text: $data,
+                            css: { favored: $root.favored[$data] },
+                            click: function() { $root.toggleFavored($data) }"
+                    ></button>
+                    <div
+                        class="num"
+                        data-bind="text: $root.totals[$data]"
+                    ></div>
+                    <button
                         class="incdec inc"
                         data-bind="click: inc"
                     ><span>+</span></button>
-                </div>
-                <span class="num" data-bind="text: $parent.scores[$data]"></span
-                ><span class="num" data-bind="text: $parent.totals[$data]"></span
-                ><span class="num" data-bind="text: formatMod($parent.modifiers[$data]())"></span>
-            </div>
+                    <button
+                        class="incdec dec"
+                        data-bind="click: dec"
+                    ><span>&ndash;</span></button>
+                    <div
+                        class="num"
+                        data-bind="text: formatMod($root.modifiers[$data]())"
+                    ></div>
+                </div
+            ></div>
         </div>
         <h3 class="total" data-bind="css: { over: over }">
             Cost:
