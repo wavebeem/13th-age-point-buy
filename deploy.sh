@@ -1,8 +1,8 @@
 #!/bin/bash
 files=(
     index.html
-    main.js
-    style.css
+    *.js
+    *.css
 )
 
 for file in "${files[@]}"; do
