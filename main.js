@@ -61,7 +61,7 @@ var classScoreBonuses = [
     ["Cleric",      "WIS or STR"],
     ["Fighter",     "STR or CON"],
     ["Paladin",     "STR or CHA"],
-    ["Ranger",      "DEX or STR"],
+    ["Ranger",      "DEX or STR or WIS"],
     ["Rogue",       "DEX or CHA"],
     ["Sorcerer",    "CHA or CON"],
     ["Wizard",      "INT or WIS"],
