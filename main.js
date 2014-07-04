@@ -44,28 +44,40 @@ var scoreToCost = function(score) {
 };
 
 var racialScoreBonuses = [
-    ["Human",       "any"],
-    ["Dwarf",       "CON or WIS"],
-    ["Half-Orc",    "STR or DEX"],
-    ["Dark Elf",    "DEX or CHA"],
-    ["High Elf",    "INT or CHA"],
-    ["Wood Elf",    "DEX or WIS"],
-    ["Gnome",       "DEX or INT"],
-    ["Half-Elves",  "CON or CHA"],
-    ["Halflings",   "CON or DEX"],
+    ["Human",       ["any"]],
+    ["Dwarf",       ["CON", "WIS"]],
+    ["Half-Orc",    ["STR", "DEX"]],
+    ["Dark Elf",    ["DEX", "CHA"]],
+    ["High Elf",    ["INT", "CHA"]],
+    ["Wood Elf",    ["DEX", "WIS"]],
+    ["Gnome",       ["DEX", "INT"]],
+    ["Half-Elves",  ["CON", "CHA"]],
+    ["Halflings",   ["CON", "DEX"]],
 ];
 
 var classScoreBonuses = [
-    ["Barbarian",   "STR or CON"],
-    ["Bard",        "DEX or CHA"],
-    ["Cleric",      "WIS or STR"],
-    ["Fighter",     "STR or CON"],
-    ["Paladin",     "STR or CHA"],
-    ["Ranger",      "DEX or STR or WIS"],
-    ["Rogue",       "DEX or CHA"],
-    ["Sorcerer",    "CHA or CON"],
-    ["Wizard",      "INT or WIS"],
+    ["Barbarian",   ["STR", "CON"]],
+    ["Bard",        ["DEX", "CHA"]],
+    ["Cleric",      ["WIS", "STR"]],
+    ["Fighter",     ["STR", "CON"]],
+    ["Paladin",     ["STR", "CHA"]],
+    ["Ranger",      ["DEX", "STR", "WIS"]],
+    ["Rogue",       ["DEX", "CHA"]],
+    ["Sorcerer",    ["CHA", "CON"]],
+    ["Wizard",      ["INT", "WIS"]],
 ];
+
+var baseHpMod = {
+    "Barbarian"  : 7,
+    "Bard"       : 7,
+    "Cleric"     : 7,
+    "Fighter"    : 8,
+    "Paladin"    : 8,
+    "Ranger"     : 7,
+    "Rogue"      : 6,
+    "Sorcerer"   : 6,
+    "Wizard"     : 6,
+};
 
 var abilityNames = [
     'STR',
@@ -144,39 +156,32 @@ var toggleFavored = function(name) {
     favored[name](!favored[name]());
 };
 
-var wideGroupedAbilityNames = [[
-    'STR', 'CON', 'DEX',
-    'INT', 'WIS', 'CHA',
-]];
-
-var narrowGroupedAbilityNames = [
-    ['STR', 'CON', 'DEX'],
-    ['INT', 'WIS', 'CHA'],
-];
-
-var width = ko.observable(document.documentElement.clientWidth);
-
-window.onresize = function() {
-    width(document.documentElement.clientWidth);
+var middle = function(a, b, c) {
+    return [a, b, c].sort()[1];
 };
 
-var groupedAbilityNames = ko.computed(function() {
-    if (width() < 800) return narrowGroupedAbilityNames;
-    return wideGroupedAbilityNames;
+var modifierAc = ko.computed(function() {
+    return middle(
+        modifiers.CON(),
+        modifiers.DEX(),
+        modifiers.WIS()
+    );
 });
 
-var $root = {
-    scores: scores,
-    modifiers: modifiers,
-    cost: cost,
-    racialScoreBonuses: racialScoreBonuses,
-    inc: inc,
-    dec: dec,
-    over: over,
-    totals: totals,
-    favored: favored,
-    toggleFavored: toggleFavored,
-    groupedAbilityNames: groupedAbilityNames,
-};
+var modifierPd = ko.computed(function() {
+    return middle(
+        modifiers.STR(),
+        modifiers.CON(),
+        modifiers.DEX()
+    );
+});
 
-ko.applyBindings($root);
+var modifierMd = ko.computed(function() {
+    return middle(
+        modifiers.INT(),
+        modifiers.WIS(),
+        modifiers.CHA()
+    );
+});
+
+ko.applyBindings({});

@@ -108,6 +108,18 @@ table.bonuses th {
     padding-right: 1em;
 }
 
+table.bonuses tr th,
+table.bonuses tr td {
+    border-bottom: 1px dotted rgba(0, 0, 0, 0.20);
+    padding-top:    10px;
+    padding-bottom: 10px;
+}
+
+table.bonuses tr:last-child th,
+table.bonuses tr:last-child td {
+    border: 0;
+}
+
 label,
 button:hover {
     cursor: pointer;
@@ -170,6 +182,14 @@ input {
     border-radius: 4px;
 }
 
+table.bonuses {
+    border-collapse: collapse;
+    font-family:
+        "Menlo",
+        "Consolas",
+        monospace;
+}
+
 .incdec span {
     font-family:
         "Menlo",
@@ -190,6 +210,10 @@ input {
     background-color: #edd;
 }
 
+td.number {
+    text-align: right;
+}
+
 header {
     background: #edb;
     border-bottom: 2px solid rgba(0, 0, 0, 0.20);
@@ -201,4 +225,12 @@ header {
 header h1,
 header h2 {
     padding: 0;
+}
+
+select.classes {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    font-size: inherit;
+    font-family: inherit;
 }

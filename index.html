@@ -18,6 +18,11 @@
             Click the checkboxes and plus and minus buttons in the following
             table to distribute your ability score points and bonuses.
         </p>
+        <p>
+            All stats are for a 1st level character and assume that you picked
+            the highest armor without an attack penalty and did not take a
+            shield.
+        </p>
         <table class="abilities">
         <thead>
             <tr>
@@ -33,7 +38,7 @@
                         <input
                             class="favored"
                             type="checkbox"
-                            data-bind="checked: $parent.favored[$data]">
+                            data-bind="checked: favored[$data]">
                         <span
                             class="score"
                             data-bind="text: $data"></span>
@@ -44,13 +49,13 @@
                         class="incdec dec"
                         data-bind="click: dec"
                     ><span>&ndash;</span></button>
-                    <span class="num" data-bind="text: $parent.totals[$data]"></span>
+                    <span class="num" data-bind="text: totals[$data]"></span>
                     <button
                         class="incdec inc"
                         data-bind="click: inc"
                     ><span>+</span></button>
                 </td>
-                <td><span class="num" data-bind="text: formatMod($parent.modifiers[$data]())"></span></td>
+                <td><span class="num" data-bind="text: formatMod(modifiers[$data]())"></span></td>
             </tr>
         </tbody>
         </table>
@@ -59,6 +64,31 @@
             <span data-bind="text: cost"></span>
             / 28
         </h3>
+    </section>
+    <section>
+        <h2>Computed Modifiers</h2>
+        <p>
+            The following modifiers are added onto your base AC, PD, and MD
+            values which can be found in the page about class stats per level.
+            These modifier does not include the +<em>level</em> modifier for
+            various stats.
+        </p>
+        <table class="bonuses">
+            <tbody>
+                <tr>
+                    <th>AC (middle of CON / DEX / WIS)</th>
+                    <td class="number" data-bind="text: formatMod(modifierAc())"></td>
+                </tr>
+                <tr>
+                    <th>PD (middle of STR / CON / DEX)</th>
+                    <td class="number" data-bind="text: formatMod(modifierPd())"></td>
+                </tr>
+                <tr>
+                    <th>MD (middle of INT / WIS / CHA)</th>
+                    <td class="number" data-bind="text: formatMod(modifierMd())"></td>
+                </tr>
+            </tbody>
+        </table>
     </section>
     <section>
         <h2>Racial Bonus</h2>
@@ -70,7 +100,7 @@
             <tbody data-bind="foreach: racialScoreBonuses">
                 <tr>
                     <th data-bind="text: $data[0]"></th>
-                    <td data-bind="text: $data[1]"></td>
+                    <td data-bind="text: $data[1].join(' / ')"></td>
                 </tr>
             </tbody>
         </table>
@@ -86,7 +116,7 @@
             <tbody data-bind="foreach: classScoreBonuses">
                 <tr>
                     <th data-bind="text: $data[0]"></th>
-                    <td data-bind="text: $data[1]"></td>
+                    <td data-bind="text: $data[1].join(' / ')"></td>
                 </tr>
             </tbody>
         </table>
