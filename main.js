@@ -53,6 +53,11 @@ var racialScoreBonuses = [
     ["Gnome",       ["DEX", "INT"]],
     ["Half-Elves",  ["CON", "CHA"]],
     ["Halflings",   ["CON", "DEX"]],
+
+    ["Dragonic",    ["STR", "CHA"]],
+    ["Forgeborn",   ["STR", "CON"]],
+    ["Aasimar",     ["WIS", "CHA"]],
+    ["Tiefling",    ["STR", "INT"]],
 ];
 
 var classScoreBonuses = [
