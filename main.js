@@ -70,6 +70,13 @@ var classScoreBonuses = [
     ["Rogue",       ["DEX", "CHA"]],
     ["Sorcerer",    ["CHA", "CON"]],
     ["Wizard",      ["INT", "WIS"]],
+
+    ["Chaos Mage",  ["INT", "CHA"]],
+    ["Commander",   ["STR", "CHA"]],
+    ["Druid",       ["STR", "DEX", "WIS"]],
+    ["Monk",        ["STR", "DEX", "WIS"]],
+    ["Necromancer", ["INT", "CHA"]],
+    ["Occultist",   ["INT", "WIS"]],
 ];
 
 var baseHpMod = {
