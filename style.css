@@ -14,6 +14,7 @@ body {
     padding: 0;
 }
 
+footer > *,
 header > *,
 section {
     display: block;
@@ -24,7 +25,7 @@ section {
 }
 
 thead th {
-    font-size: 60%;
+    font-size: 70%;
     text-transform: uppercase;
 }
 
@@ -33,20 +34,27 @@ thead th {
     font-size: 120%;
     margin: 0 auto;
     width: 100%;
+
+    background: white;
+    box-shadow: 0 1px 2px 0px rgba(0, 0, 0, 0.30);
+    color: #666;
+}
+
+.abilities th {
+    background: rgba(136, 82, 27, 0.03);
+    border-bottom: 2px solid rgba(0, 0, 0, 0.02);
 }
 
 .abilities th span {
     display: inline-block;
-    background: rgba(0, 0, 0, 0.10);
-    padding: 2px 8px;
+    padding: 4px 10px;
     border-radius: 4px;
 }
 
 .abilities td {
-    background: rgba(255, 255, 255, 0.50);
-    color: #666;
     border-top:    2px solid rgba(0, 0, 0, 0.02);
     border-bottom: 2px solid rgba(0, 0, 0, 0.02);
+    vertical-align: middle;
     text-align: center;
     font-weight: bold;
     font-family:
@@ -55,15 +63,12 @@ thead th {
         monospace;
 }
 
-.abilities tr:first-child  td:first-child { border-top-left-radius:     4px; }
-.abilities tr:first-child  td:last-child  { border-top-right-radius:    4px; }
-.abilities tr:last-child   td:first-child { border-bottom-left-radius:  4px; }
-.abilities tr:last-child   td:last-child  { border-bottom-right-radius: 4px; }
+table {
+    border-radius: 2px;
+    overflow: hidden;
+}
 
-.abilities tr:first-child  td { border-top:    0; }
-.abilities tr:last-child   td { border-bottom: 0; }
-.abilities td:first-child     { border-left:   0; }
-.abilities td:last-child      { border-right:  0; }
+.abilities tr:last-child th { border-bottom: 0; }
 
 .abilities td {
     font-size: 120%;
@@ -110,7 +115,7 @@ table.bonuses th {
 
 table.bonuses tr th,
 table.bonuses tr td {
-    border-bottom: 1px dotted rgba(0, 0, 0, 0.20);
+    border-bottom: 2px solid rgba(0, 0, 0, 0.03);
     padding-top:    10px;
     padding-bottom: 10px;
 }
@@ -123,34 +128,27 @@ table.bonuses tr:last-child td {
 label,
 button:hover {
     cursor: pointer;
-    transition: 0.25s box-shadow;
+    transition: 0.25s all;
     font-size: inherit;
 }
 
 .total {
+    display: block;
+    font-weight: bold;
     margin: 0;
-    margin-top: 10px;
     padding: 4px;
-    border-radius: 8px;
+    border-radius: 2px;
     transition: 0.25s all;
     text-align: center;
 }
 
-.total.over {
-    background: #c84;
-    color: #fff;
+.warning {
+    background: rgba(204, 136, 68, 0.20);
+    color: #963;
 }
 
 .abilities td > span {
     padding: 0 4px;
-}
-
-label {
-    border-radius: 4px;
-}
-
-label:hover {
-    background: rgba(0, 0, 0, 0.05);
 }
 
 :focus {
@@ -164,14 +162,23 @@ input {
 }
 
 .score.favored {
-    text-decoration: underline;
-    font-weight: bold;
-    box-shadow: 0 0 0 3px rgba(32, 128, 192, 0.30);
+    color: white;
+    background: #864;
+}
+
+.score {
+    background: white;
+    border: 0;
+    color: inherit;
+    font: inherit;
+    border-radius: 6px;
+    padding: 2px 10px;
+    border: 2px solid rgba(0, 0, 0, 0.15);
 }
 
 .incdec {
     background: #eee;
-    border: 0;
+    border: 2px solid rgba(0, 0, 0, 0.10);
     color: #421;
     padding: 0 0.25em;
     width:  2rem;
@@ -184,6 +191,12 @@ input {
 
 table.bonuses {
     border-collapse: collapse;
+}
+
+th,
+.score,
+.incdec span,
+table.bonuses {
     font-family:
         "Menlo",
         "Consolas",
@@ -191,10 +204,6 @@ table.bonuses {
 }
 
 .incdec span {
-    font-family:
-        "Menlo",
-        "Consolas",
-        monospace;
     vertical-align: text-top;
     height: 100%;
     line-height: 100%;
@@ -214,12 +223,32 @@ td.number {
     text-align: right;
 }
 
+footer,
 header {
-    background: #edb;
-    border-bottom: 2px solid rgba(0, 0, 0, 0.20);
-    color: #641;
     margin-bottom: 0;
     padding: 1em;
+}
+
+header {
+    border-bottom: 2px solid rgba(0, 0, 0, 0.10);
+    background: #c48;
+    color: rgba(255, 255, 255, 0.80);
+}
+
+footer {
+    font-size: 80%;
+    border-top: 2px solid rgba(0, 0, 0, 0.10);
+    background: #864;
+    color: rgba(255, 255, 255, 0.80);
+}
+
+header h1,
+footer a {
+    color: #fff;
+}
+
+a {
+    color: #c48;
 }
 
 header h1,

@@ -13,66 +13,58 @@
         <h2>Ability Scores Calculator</h2>
     </header>
     <section>
-        <h3>How to Use</h3>
-        <p>
-            Click the checkboxes and plus and minus buttons in the following
-            table to distribute your ability score points and bonuses.
-        </p>
-        <p>
-            All stats are for a 1st level character and assume that you picked
-            the highest armor without an attack penalty and did not take a
-            shield.
-        </p>
+        <h3>Ability Scores</h3>
         <table class="abilities">
-        <thead>
-            <tr>
-                <th><span>+2 Bonus</span></th>
-                <th><span>Score</span></th>
-                <th><span>Modifier</span></th>
-            </tr>
-        </thead>
-        <tbody data-bind="foreach: abilityNames">
-            <tr class="ability">
-                <td>
-                    <label>
-                        <input
-                            class="favored"
-                            type="checkbox"
-                            data-bind="checked: favored[$data]">
-                        <span
+            <thead>
+                <tr>
+                    <th><span>+2 Bonus</span></th>
+                    <th><span>Score</span></th>
+                    <th><span>Modifier</span></th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- ko foreach: abilityNames -->
+                <tr class="ability">
+                    <td>
+                        <button
                             class="score"
-                            data-bind="text: $data"></span>
-                    </label>
-                </td>
-                <td>
-                    <button
-                        class="incdec dec"
-                        data-bind="click: dec"
-                    ><span>&ndash;</span></button>
-                    <span class="num" data-bind="text: totals[$data]"></span>
-                    <button
-                        class="incdec inc"
-                        data-bind="click: inc"
-                    ><span>+</span></button>
-                </td>
-                <td><span class="num" data-bind="text: formatMod(modifiers[$data]())"></span></td>
-            </tr>
-        </tbody>
+                            data-bind="
+                                css: {
+                                    favored: favored[$data]
+                                },
+                                text: $data,
+                                click: function() { toggleFavored($data) }
+                            "
+                        ></button>
+                    </td>
+                    <td>
+                        <button
+                            class="incdec dec"
+                            data-bind="click: dec"
+                        ><span>&ndash;</span></button>
+                        <span class="num" data-bind="text: totals[$data]"></span>
+                        <button
+                            class="incdec inc"
+                            data-bind="click: inc"
+                        ><span>+</span></button>
+                    </td>
+                    <td><span class="num" data-bind="text: formatMod(modifiers[$data]())"></span></td>
+                </tr>
+                <!-- /ko -->
+                <tr>
+                    <th colspan="3">
+                        <span class="total" data-bind="css: { warning: over }">
+                            Cost:
+                            <span data-bind="text: cost"></span>
+                            / 28
+                        </span>
+                    </th>
+                </tr>
+            </tbody>
         </table>
-        <h3 class="total" data-bind="css: { over: over }">
-            Cost:
-            <span data-bind="text: cost"></span>
-            / 28
-        </h3>
     </section>
     <section>
-        <h2>Computed Modifiers</h2>
-        <p>
-            The following modifiers are added onto your base AC, PD, and MD
-            values which can be found in the page about class stats per level.
-            These modifier does not include the +<em>level</em> modifier for
-            various stats.
-        </p>
+        <h3>Computed Modifiers</h3>
         <table class="bonuses">
             <tbody>
                 <tr>
@@ -91,11 +83,7 @@
         </table>
     </section>
     <section>
-        <h2>Racial Bonus</h2>
-        <p>
-            Add +2 to <b>one</b> ability score determined by your race. This
-            bonus is applied after your point buy.
-        </p>
+        <h3>Racial Bonus</h2>
         <table class="bonuses">
             <tbody data-bind="foreach: racialScoreBonuses">
                 <tr>
@@ -106,12 +94,7 @@
         </table>
     </section>
     <section>
-        <h2>Class Bonus</h2>
-        <p>
-            Add +2 to <b>one</b> ability score determined by your class. This
-            bonus is applied after your point buy and cannot be the same as
-            your racial bonus.
-        </p>
+        <h3>Class Bonus</h2>
         <table class="bonuses">
             <tbody data-bind="foreach: classScoreBonuses">
                 <tr>
@@ -121,6 +104,26 @@
             </tbody>
         </table>
     </section>
+    <footer>
+        <p>
+            This point buy calculator uses trademarks and/or copyrights owned
+            by Fire Opal Media, which are used under the Fire Opal Media, 13th
+            Age Community Use Policy. We are expressly prohibited from charging
+            you to use or access this content. This point buy calculator is not
+            published, endorsed, or specifically approved by Fire Opal Media.
+            For more information about Fire Opal Media's 13th Age Community Use
+            Policy, please visit
+            <a href="http://www.fireopalmedia.com/communityuse"
+            >www.fireopalmedia.com/communityuse</a>.
+            For more information about Fire Opal Media and 13th Age products,
+            please visit
+            <a href="http://www.fireopalmedia.com">www.fireopalmedia.com</a> and
+            <a href="http://www.pelgranepress.com">www.pelgranepress.com</a>.
+        </p>
+        <p>
+            All code &copy; 2014 <a href="http://mockbrian.com">Brian Mock</a>
+        </p>
+    </footer>
     <script src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.6.0/underscore-min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/knockout/3.1.0/knockout-min.js"></script>
     <script src="main.js"></script>
