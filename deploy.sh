@@ -1,10 +1,7 @@
 #!/bin/bash
-files=(
-    index.html
-    *.js
-    *.css
-)
-
-for file in "${files[@]}"; do
-    s3cmd sync -P --no-progress "$file" s3://mockbrian.com/13th-age/point-buy/
-done
+s3cmd sync -P --no-progress \
+    --exclude "*" \
+    --include "index.html" \
+    --include "*.css" \
+    --include "*.js" \
+    . s3://mockbrian.com/13th-age/point-buy/
