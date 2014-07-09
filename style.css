@@ -1,4 +1,5 @@
-html {
+html,
+body {
     font-family:
         "Cambria",
         "Apple Lisong",
@@ -6,12 +7,12 @@ html {
     font-size: 20px;
     background: #fbf0d9;
     color: #5b4636;
-}
-
-html,
-body {
     margin:  0;
     padding: 0;
+}
+
+body {
+    /* min-width: 500px;*/
 }
 
 footer > *,
@@ -24,7 +25,7 @@ section {
     margin: 0 auto;
 }
 
-thead th {
+.abilities thead th {
     font-size: 70%;
     text-transform: uppercase;
 }
@@ -43,12 +44,12 @@ thead th {
 .abilities th {
     background: rgba(136, 82, 27, 0.03);
     border-bottom: 2px solid rgba(0, 0, 0, 0.02);
+    text-align: center;
 }
 
 .abilities th span {
     display: inline-block;
     padding: 4px 10px;
-    border-radius: 4px;
 }
 
 .abilities td {
@@ -61,11 +62,6 @@ thead th {
         "Menlo",
         "Consolas",
         monospace;
-}
-
-table {
-    border-radius: 2px;
-    overflow: hidden;
 }
 
 .abilities tr:last-child th { border-bottom: 0; }
@@ -163,7 +159,7 @@ input {
 
 .score.favored {
     color: white;
-    background: #864;
+    background: #666;
 }
 
 .score {
@@ -243,9 +239,15 @@ footer {
 }
 
 header h1,
+header a:hover,
+footer a:hover,
+header a,
 footer a {
     color: #fff;
 }
+
+header h1 { font-size: 150%; }
+header h2 { font-size: 120%; }
 
 a {
     color: #c48;
@@ -253,7 +255,8 @@ a {
 
 header h1,
 header h2 {
-    padding: 0;
+    padding-top: 0;
+    padding-bottom: 0;
 }
 
 select.classes {
@@ -262,4 +265,18 @@ select.classes {
     padding: 10px;
     font-size: inherit;
     font-family: inherit;
+}
+
+section h3 {
+    text-align: center;
+}
+
+section table {
+    margin: 0 auto;
+}
+
+h1,
+h2,
+h3 {
+    font-weight: bold;
 }
