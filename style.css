@@ -47,7 +47,7 @@ header > * {
 }
 
 .abilities td {
-    border-bottom: 1px solid rgba(0, 0, 0, 0.02);
+    border-bottom: 1px solid #eee;
     text-align: center;
     font-weight: bold;
 }
@@ -113,7 +113,7 @@ button:hover {
     padding: 0 4px;
 }
 
-:focus {
+button:focus {
     outline: none;
     box-shadow: 0 0 0 3px rgba(204, 68, 68, 0.50);
 }
