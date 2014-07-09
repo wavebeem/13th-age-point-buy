@@ -11,18 +11,16 @@ body {
     padding: 0;
 }
 
-body {
-    /* min-width: 500px;*/
-}
-
 footer > *,
-header > *,
-section {
+header > * {
     display: block;
     padding: 8px;
     max-width: 600px;
-    min-width: 330px;
     margin: 0 auto;
+}
+
+.abilities {
+    max-width: 600px;
 }
 
 .abilities thead th {
@@ -31,11 +29,7 @@ section {
 }
 
 .abilities {
-    border-collapse: collapse;
     font-size: 120%;
-    margin: 0 auto;
-    width: 100%;
-
     background: white;
     box-shadow: 0 1px 2px 0px rgba(0, 0, 0, 0.30);
     color: #666;
@@ -43,7 +37,7 @@ section {
 
 .abilities th {
     background: rgba(136, 82, 27, 0.03);
-    border-bottom: 2px solid rgba(0, 0, 0, 0.02);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06) !important;
     text-align: center;
 }
 
@@ -53,31 +47,17 @@ section {
 }
 
 .abilities td {
-    border-top:    2px solid rgba(0, 0, 0, 0.02);
-    border-bottom: 2px solid rgba(0, 0, 0, 0.02);
-    vertical-align: middle;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.02);
     text-align: center;
     font-weight: bold;
-    font-family:
-        "Menlo",
-        "Consolas",
-        monospace;
 }
 
-.abilities tr:last-child th { border-bottom: 0; }
+.abilities tbody tr:last-child th {
+    border-bottom: 0;
+}
 
 .abilities td {
     font-size: 120%;
-}
-
-.abilities td > label {
-    display: inline-block;
-    width: 100%;
-}
-
-.abilities th,
-.abilities td {
-    padding: 6px 10px;
 }
 
 .ability .num {
@@ -91,19 +71,6 @@ input::-moz-focus-inner {
     border: 0 none !important;
 }
 
-label {
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    -khtml-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-}
-
-label span {
-    font-weight: bold;
-}
-
 table.bonuses th {
     text-align: right;
     padding-right: 1em;
@@ -111,9 +78,9 @@ table.bonuses th {
 
 table.bonuses tr th,
 table.bonuses tr td {
-    border-bottom: 2px solid rgba(0, 0, 0, 0.03);
-    padding-top:    10px;
-    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.03);
+    padding-top:    4px;
+    padding-bottom: 4px;
 }
 
 table.bonuses tr:last-child th,
@@ -121,7 +88,6 @@ table.bonuses tr:last-child td {
     border: 0;
 }
 
-label,
 button:hover {
     cursor: pointer;
     transition: 0.25s all;
@@ -176,22 +142,19 @@ input {
     background: #eee;
     border: 2px solid rgba(0, 0, 0, 0.10);
     color: #421;
-    padding: 0 0.25em;
+    vertical-align: text-top;
     width:  2rem;
     height: 2rem;
     font-size:   1em;
     line-height: 1em;
-    font-weight: bold;
     border-radius: 4px;
-}
-
-table.bonuses {
-    border-collapse: collapse;
+    overflow: hidden;
 }
 
 th,
 .score,
 .incdec span,
+.abilities td,
 table.bonuses {
     font-family:
         "Menlo",
@@ -201,8 +164,6 @@ table.bonuses {
 
 .incdec span {
     vertical-align: text-top;
-    height: 100%;
-    line-height: 100%;
 }
 
 .incdec.inc {
@@ -215,13 +176,8 @@ table.bonuses {
     background-color: #edd;
 }
 
-td.number {
-    text-align: right;
-}
-
 footer,
 header {
-    margin-bottom: 0;
     padding: 1em;
 }
 
@@ -229,6 +185,10 @@ header {
     border-bottom: 2px solid rgba(0, 0, 0, 0.10);
     background: #c48;
     color: rgba(255, 255, 255, 0.80);
+}
+
+main {
+    margin-bottom: 1em;
 }
 
 footer {
@@ -249,22 +209,10 @@ footer a {
 header h1 { font-size: 150%; }
 header h2 { font-size: 120%; }
 
-a {
-    color: #c48;
-}
-
 header h1,
 header h2 {
     padding-top: 0;
     padding-bottom: 0;
-}
-
-select.classes {
-    display: block;
-    width: 100%;
-    padding: 10px;
-    font-size: inherit;
-    font-family: inherit;
 }
 
 section h3 {
