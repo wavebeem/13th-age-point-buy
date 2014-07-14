@@ -21,60 +21,54 @@
     <main class="container-fluid">
         <div class="row">
             <div class="col-lg-6">
-                <section class="">
+                <section>
                     <h3>Ability Scores</h3>
-                    <div class="table-responsive">
-                    <table class="abilities table">
-                        <thead>
-                            <tr>
-                                <th><span>+2 Bonus</span></th>
-                                <th><span>Score</span></th>
-                                <th><span>Modifier</span></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <!-- ko foreach: abilityNames -->
-                            <tr class="ability">
-                                <td>
-                                    <button
-                                        class="score"
-                                        data-bind="
-                                            css: {
-                                                favored: favored[$data]
-                                            },
-                                            text: $data,
-                                            click: function() { toggleFavored($data) }
-                                        "
-                                    ></button>
-                                </td>
-                                <td>
-                                    <button
-                                        class="incdec dec"
-                                        data-bind="click: dec"
-                                    ><span class="glyphicon glyphicon-minus"></span></button>
-                                    <span class="num" data-bind="text: totals[$data]"></span>
-                                    <button
-                                        class="incdec inc"
-                                        data-bind="click: inc"
-                                    ><span class="glyphicon glyphicon-plus"></span></button>
-                                </td>
-                                <td><span class="num" data-bind="text: formatMod(modifiers[$data]())"></span></td>
-                            </tr>
-                            <!-- /ko -->
-                            <tr>
-                                <th colspan="3">
-                                    <span class="total" data-bind="css: { warning: over }">
-                                        Cost:
-                                        <span data-bind="text: cost"></span>
-                                        / 28
-                                    </span>
-                                </th>
-                            </tr>
-                        </tbody>
-                    </table>
+                    <div class="abilities row">
+                        <div class="row">
+                            <div class="header col-xs-4">+2 Bonus</div>
+                            <div class="header col-xs-4">Score</div>
+                            <div class="header col-xs-4">Modifier</div>
+                        </div>
+                        <!-- ko foreach: abilityNames -->
+                        <div class="row ability">
+                            <div class="col-xs-4">
+                                <button
+                                    class="score btn"
+                                    data-bind="
+                                        css: {
+                                            favored: favored[$data]
+                                        },
+                                        text: $data,
+                                        click: function() { toggleFavored($data) }
+                                    "
+                                ></button>
+                            </div>
+                            <div class="col-xs-4">
+                                <button
+                                    class="incdec dec btn"
+                                    data-bind="click: dec"
+                                ><span class="glyphicon glyphicon-minus"></span></button>
+                                <span class="num" data-bind="text: totals[$data]"></span>
+                                <button
+                                    class="incdec inc btn"
+                                    data-bind="click: inc"
+                                ><span class="glyphicon glyphicon-plus"></span></button>
+                            </div>
+                            <div class="col-xs-4">
+                                <span class="num" data-bind="text: formatMod(modifiers[$data]())"></span>
+                            </div>
+                        </div>
+                        <!-- /ko -->
+                        <div class="row">
+                            <span class="total" data-bind="css: { warning: over }">
+                                Cost:
+                                <span data-bind="text: cost"></span>
+                                / 28
+                            </span>
+                        </div>
                     </div>
                 </section>
-                <section class="">
+                <section>
                     <h3>Computed Modifiers</h3>
                     <table class="bonuses">
                         <tbody>

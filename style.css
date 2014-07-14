@@ -2,6 +2,9 @@ html,
 body {
     font-family:
         "Cambria",
+        "Georgia",
+        "Baskerville",
+        "Hoefler Text",
         "Apple Lisong",
         serif;
     font-size: 20px;
@@ -19,44 +22,48 @@ header > * {
     margin: 0 auto;
 }
 
-.abilities {
-    max-width: 600px;
+.abilities > .row > * {
+    vertical-align: middle;
 }
 
-.abilities thead th {
+.abilities .header {
     font-size: 70%;
     text-transform: uppercase;
-}
 
-.abilities {
-    font-size: 120%;
-    background: white;
-    box-shadow: 0 1px 2px 0px rgba(0, 0, 0, 0.30);
-    color: #666;
-}
-
-.abilities th {
     background: rgba(136, 82, 27, 0.03);
     border-bottom: 1px solid rgba(0, 0, 0, 0.06) !important;
     text-align: center;
 }
 
-.abilities th span {
+.abilities .header {
     display: inline-block;
-    padding: 4px 10px;
+    padding: 0px;
 }
 
-.abilities td {
+.abilities {
+    font-size: 80%;
+    background: white;
+    box-shadow: 0 1px 2px 0px rgba(0, 0, 0, 0.30);
+    color: #666;
+
+    margin: 0 auto;
+
+    min-width: 400px;
+    max-width: 800px;
+    /* overflow-x: auto;*/
+}
+
+.abilities > .row {
     border-bottom: 1px solid #eee;
     text-align: center;
     font-weight: bold;
 }
 
-.abilities tbody tr:last-child th {
+.abilities > .row:last-child {
     border-bottom: 0;
 }
 
-.abilities td {
+.abilities > .row {
     font-size: 120%;
 }
 
@@ -71,27 +78,29 @@ input::-moz-focus-inner {
     border: 0 none !important;
 }
 
-table.bonuses th {
+.bonuses th {
     text-align: right;
     padding-right: 1em;
 }
 
-table.bonuses tr th,
-table.bonuses tr td {
+.bonuses tr th,
+.bonuses tr td {
     border-bottom: 1px solid rgba(0, 0, 0, 0.03);
     padding-top:    4px;
     padding-bottom: 4px;
 }
 
-table.bonuses tr:last-child th,
-table.bonuses tr:last-child td {
+.bonuses tr:last-child th,
+.bonuses tr:last-child td {
     border: 0;
 }
 
 button:hover {
     cursor: pointer;
+}
+
+button {
     transition: 0.25s all;
-    font-size: inherit;
 }
 
 .total {
@@ -111,11 +120,6 @@ button:hover {
 
 .abilities td > span {
     padding: 0 4px;
-}
-
-button:focus {
-    outline: none;
-    box-shadow: 0 0 0 3px rgba(204, 68, 68, 0.50);
 }
 
 button,
@@ -142,11 +146,11 @@ input {
     background: #eee;
     border: 2px solid rgba(0, 0, 0, 0.10);
     color: #421;
-    vertical-align: text-top;
-    width:  2rem;
-    height: 2rem;
-    font-size:   1em;
-    line-height: 1em;
+    /* vertical-align: text-top;*/
+    width:  1.50em;
+    height: 1.50em;
+    font-size:   1.50em;
+    line-height: 1.00em;
     border-radius: 4px;
     overflow: hidden;
 }
@@ -154,16 +158,12 @@ input {
 th,
 .score,
 .incdec span,
-.abilities td,
-table.bonuses {
+.abilities,
+.bonuses {
     font-family:
         "Menlo",
         "Consolas",
         monospace;
-}
-
-.incdec span {
-    vertical-align: text-top;
 }
 
 .incdec.inc {
@@ -201,6 +201,8 @@ footer {
 header h1,
 header a:hover,
 footer a:hover,
+header a:focus,
+footer a:focus,
 header a,
 footer a {
     color: #fff;
