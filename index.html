@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>13th Age Point Buy</title>
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="style.css">
@@ -20,74 +20,52 @@
     </header>
     <main class="container-fluid">
         <div class="row">
-            <div class="col-lg-6">
-                <section>
-                    <h3>Ability Scores</h3>
-                    <div class="abilities row">
-                        <div class="row">
-                            <div class="header col-xs-4">+2 Bonus</div>
-                            <div class="header col-xs-4">Score</div>
-                            <div class="header col-xs-4">Modifier</div>
-                        </div>
-                        <!-- ko foreach: abilityNames -->
-                        <div class="row ability">
-                            <div class="col-xs-4">
-                                <button
-                                    class="score btn"
-                                    data-bind="
-                                        css: {
-                                            favored: favored[$data]
-                                        },
-                                        text: $data,
-                                        click: function() { toggleFavored($data) }
-                                    "
-                                ></button>
-                            </div>
-                            <div class="col-xs-4">
-                                <button
-                                    class="incdec dec btn"
-                                    data-bind="click: dec"
-                                ><span class="glyphicon glyphicon-minus"></span></button>
-                                <span class="num" data-bind="text: totals[$data]"></span>
-                                <button
-                                    class="incdec inc btn"
-                                    data-bind="click: inc"
-                                ><span class="glyphicon glyphicon-plus"></span></button>
-                            </div>
-                            <div class="col-xs-4">
-                                <span class="num" data-bind="text: formatMod(modifiers[$data]())"></span>
-                            </div>
-                        </div>
-                        <!-- /ko -->
-                        <div class="row">
-                            <span class="total" data-bind="css: { warning: over }">
-                                Cost:
-                                <span data-bind="text: cost"></span>
-                                / 28
-                            </span>
-                        </div>
+            <section class="col-lg-6">
+                <h3>Ability Scores</h3>
+                <div class="abilities">
+                    <!-- ko foreach: abilityNames -->
+                    <div class="ability">
+                        <button
+                            class="score btn"
+                            data-bind="
+                                css: { favored: favored[$data] },
+                                click: function() { toggleFavored($data) }
+                            "
+                        >+2</button>
+                        <button
+                            class="incdec dec btn"
+                            data-bind="click: dec"
+                        ><span class="glyphicon glyphicon-minus"></span></button
+                        ><button
+                            class="incdec inc btn"
+                            data-bind="click: inc"
+                        ><span class="glyphicon glyphicon-plus"></span></button>
+                        <label data-bind="text: $data"></label>
+                        <span class="num" data-bind="text: totals[$data]"></span>
+                        <span class="num" data-bind="text: formatMod(modifiers[$data]())"></span>
                     </div>
-                </section>
-                <section>
-                    <h3>Computed Modifiers</h3>
-                    <table class="bonuses">
-                        <tbody>
-                            <tr>
-                                <th>AC (CON / DEX / WIS)</th>
-                                <td class="number" data-bind="text: formatMod(modifierAc())"></td>
-                            </tr>
-                            <tr>
-                                <th>PD (STR / CON / DEX)</th>
-                                <td class="number" data-bind="text: formatMod(modifierPd())"></td>
-                            </tr>
-                            <tr>
-                                <th>MD (INT / WIS / CHA)</th>
-                                <td class="number" data-bind="text: formatMod(modifierMd())"></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </section>
-            </div>
+                    <!-- /ko -->
+                    <div class="header">
+                        <label>AC (CON / DEX / WIS)</label>
+                        <span class="number" data-bind="text: formatMod(modifierAc())"></span>
+                    </div>
+                    <div class="header">
+                        <label>PD (STR / CON / DEX)</label>
+                        <span class="number" data-bind="text: formatMod(modifierPd())"></span>
+                    </div>
+                    <div class="header">
+                        <label>MD (INT / WIS / CHA)</label>
+                        <span class="number" data-bind="text: formatMod(modifierMd())"></span>
+                    </div>
+                    <div class="header">
+                        <span class="total" data-bind="css: { warning: over }">
+                            Cost:
+                            <span data-bind="text: cost"></span>
+                            / 28
+                        </span>
+                    </div>
+                </div>
+            </section>
             <div class="col-lg-6">
                 <div class="row">
                 <section class="col-md-6">
